@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  mysqldb:
+    image: arnab83/mysql5.7_wp5.1
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+
+
+  wpressos:
+    image: arnab83/wordpress5.1_mysql5.7
+    volumes:
+      - wordpress_data:/var/www/html
+    restart: always
+    depends_on: 
+      - mysqldb
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: mysqldb
+      WORDPRESS_DB_USER: arnab
+      WORDPRESS_DB_PASSWORD: redhat
+      WORDPRESS_DB_NAME: wpdb
+
+volumes:
+  mysql_data:     
+  wordpress_data 
