@@ -6,12 +6,6 @@ services:
     volumes:
       - mysql_data:/var/lib/mysql
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_USER: arnab
-      MYSQL_PASSWORD: redhat
-      MYSQL_DATABASE: wpdb
-
 
   wpressos:
     image: arnab83/wordpress5.1_mysql5.7
